@@ -1,0 +1,19 @@
+@(pizzas: Seq[Pizza])
+
+@import helper._
+
+@main("Pizza Menu") {
+
+  <h1>Pizza Menu</h1>
+
+  <ul>
+    @for(pizza <- pizzas){
+      @form(action=routes.PizzaController.orderPizza){
+        Pizza: @pizza.name
+        <button type="submit">order</button>
+        <input type="hidden" name="pizza.name" value="@pizza.name"/>
+      }
+    }
+  </ul>
+
+}
